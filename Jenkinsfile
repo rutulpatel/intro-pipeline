@@ -6,5 +6,10 @@ pipeline {
         echo 'Hello jenkins'
       }
     }
+    stage('Java version') {
+      steps {
+        sh 'java -version'
+      }
+    }
   }
 }

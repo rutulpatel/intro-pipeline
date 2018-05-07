@@ -1,12 +1,6 @@
 pipeline {
   agent {
-    docker {
-      image 'golang:1.10.1-alpine'
-      label 'docker'
-    }
-
-    
-    
+    label 'centos'
   }
   stages {
     stage('Say Hello') {
@@ -14,9 +8,9 @@ pipeline {
         echo 'Hello jenkins'
       }
     }
-    stage('Go version') {
+    stage('Java version') {
       steps {
-        sh 'go version'
+        sh 'java -version'
       }
     }
   }

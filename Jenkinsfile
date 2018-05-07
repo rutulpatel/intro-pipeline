@@ -2,6 +2,7 @@ pipeline {
   agent {
     label 'centos'
   }
+  
   stages {
     stage('Say Hello') {
       steps {

@@ -9,19 +9,19 @@ pipeline {
         echo 'Hello jenkins'
       }
     }
-    stage ('Deploy') {
-      options {
-        timeout(time: 30, unit: 'SECONDS')
-      }
-      input {
-        message 'Which version?'
-        ok "Deploy"
-        parameters {
-          choice(name: 'APP_VERSION', choices: "v1.1\nv1.2\nv1.3", description: 'What to deploy?')
+    stage('Testing') {
+      failFast true
+      parallel {
+        stage ('Java 8'){
+          agent {
+            label 'centos'
+          }
+          steps {
+            sh 'java -version'
+            sleep (time: 10, unit: 'SECONDS')
+          }
         }
-      }
-      steps {
-        echo "Deploying ${APP_VERSION}."
+        
       }
     }
   }
